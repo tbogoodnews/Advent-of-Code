@@ -1,0 +1,7 @@
+
+.Rproj.user/*
+*.Rproj
+Advent-of-Code-2021/
+.vscode/launch.json
+Day_1/day_one.cs
+*.exe
