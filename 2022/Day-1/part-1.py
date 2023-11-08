@@ -6,4 +6,4 @@ data = data.split("\n\n")
 
 data = [sum([int(j) for j in i.split("\n") if j!=""]) for i in data]
 
-print(max(data)))
+print(max(data))
