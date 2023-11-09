@@ -3,4 +3,4 @@
 .vscode/launch.json
 *.exe
 */inputs.txt
-*/input.txt
+*input*
