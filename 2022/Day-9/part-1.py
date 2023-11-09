@@ -31,7 +31,6 @@ for l in s:
                 tail[0] = (tail[0]+head[0])//2
             elif abs(tail[1]-head[1])>1:
                 tail[1] = (tail[1]+head[1])//2
-        print(head, tail)
         pos.append(str(tail[0]) + "x"+str(tail[1]))
 
 

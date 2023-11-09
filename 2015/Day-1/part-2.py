@@ -14,7 +14,6 @@ for i in list(s):
         floor -= 1
 
     if floor == -1:
-        print(char)
         break 
 
 

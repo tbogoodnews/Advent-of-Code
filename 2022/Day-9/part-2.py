@@ -28,7 +28,7 @@ class knot:
             if abs(tail[0]-head[0])>1:
                 self.pos[0] = (tail[0]+head[0])//2
             elif abs(tail[1]-head[1])>1:
-                self.pos[1] = (tail[1]+head[1])//2
+               self.pos[1] = (tail[1]+head[1])//2
         self.path.append(str(self.pos[0]) + "x"+str(self.pos[1]))
         if self.child is not None:
              self.child.update() # call if distance distorted too much

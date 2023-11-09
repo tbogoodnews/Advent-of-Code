@@ -22,7 +22,7 @@ def filter_out(read_out, perfect_bit, i):
             clean.append(j)
     return clean 
 
-ox_list = values
+ox_list = values[:]
 ox_compare_on = 0
 while len(ox_list)>1:
     perfect_ox_bit = most_common(ox_list)[ox_compare_on]
@@ -31,9 +31,11 @@ while len(ox_list)>1:
 
 print(ox_list)
 
-co_list = values
+co_list = open("input.txt", "r").readlines()
+print(co_list)
 co_compare_on = 0
 while len(co_list)>1:
+    print(co_list)
     perfect_co_bit = most_common(co_list, True)[co_compare_on],
     co_list = filter_out(co_list, perfect_co_bit, co_compare_on)
     co_compare_on += 1

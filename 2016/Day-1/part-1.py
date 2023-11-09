@@ -1,4 +1,4 @@
-file = "inputs"
+file = "inputs.txt"
 
 s = open(file, "r").read()[:-1].split(", ")
 
