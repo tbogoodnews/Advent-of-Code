@@ -155,7 +155,6 @@ def part_two(d):
                         break
             if temp != "": nums.append(int(temp))
 
-        print(nums)
         if len(nums) == 2:
             total += nums[0] * nums[1]
     return total 
