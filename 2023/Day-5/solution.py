@@ -1,12 +1,9 @@
-input_txt = open("input.txt")
+data = open("input.txt").read()[:-1].split("\n\n")
 
-data = input_txt.read()[:-1].split("\n\n")
-
-def traverse(value, depth = 1):
+def traverse(value, depth = 1): 
     if depth >= len(data):
         return value
-    level = data[depth].split("\n")[1:]
-    for v in level:
+    for v in data[depth].split("\n")[1:]:
         dest_range_start = int(v.split()[0])
         source_range_start = int(v.split()[1])
         range_len = int(v.split()[2])
@@ -14,16 +11,12 @@ def traverse(value, depth = 1):
             return traverse(dest_range_start + (value - source_range_start), depth + 1)
     return traverse(value, depth + 1)
 
-
 def part_one(s):
-    seeds = [int(x) for x in s[0].split()[1:]]
-    return min(traverse(y) for y in seeds)
-    #for seeds
+    return min(traverse(y) for y in [int(x) for x in s[0].split()[1:]])
 
 def return_ranges(start, s_range, depth):
     # Only need to return destination and ranges, then recurse
-    level = data[depth].split("\n")[1:]
-    for v in level:
+    for v in data[depth].split("\n")[1:]:
         dest_range_start = int(v.split()[0])
         source_range_start = int(v.split()[1])
         range_len = int(v.split()[2])
@@ -35,7 +28,7 @@ def return_ranges(start, s_range, depth):
             else:
                 return [[destination, avalible_range]] + return_ranges(start + avalible_range, s_range - avalible_range, depth)
     # Else, return identity mapping for elements up to next closest
-    sources = sorted([int(v.split()[1]) for v in level]) # Sorted list of sources
+    sources = sorted([int(v.split()[1]) for v in data[depth].split("\n")[1:]]) # Sorted list of sources
     if start > max(sources): # If exceeding all sources (and not within range), identity all
         return [[start, s_range]]
     barley_larger = sources[[v > start for v in sources].index(True)] # Find first that's larger
