@@ -1,4 +1,6 @@
 import functools
+import math
+
 input_txt = open("input.txt")
 
 data = input_txt.read()[:-1].split("\n")
@@ -19,14 +21,18 @@ def part_one():
     return steps
 
 def part_two():
-    steps = 0
-    curr_nodes = [x for x in nodes.keys() if x[2] == "A"] # end in A
-    while not all(x[2] == "Z" for x in curr_nodes):
-        direction = moves[steps % len(moves)]
-        curr_nodes = set(move_step(i, direction) for i in curr_nodes)
-        steps += 1
-    return steps
-
+    factors = []
+    a_nodes = [x for x in nodes.keys() if x[2] == "A"] # end in A
+    z_nodes = [x for x in nodes.keys() if x[2] == "Z"]
+    for n in a_nodes:
+        steps = 0 
+        current_node = n
+        while current_node not in z_nodes:
+            direction = moves[steps % len(moves)]
+            current_node = nodes[current_node][direction]
+            steps += 1
+        factors.append(steps)
+    return math.lcm(*factors)
 
 print("Solution to part one:", part_one())
 print("Solution to part two:", part_two())
